@@ -23,14 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             <img src="images/zzlogoooo.png" alt="Bootstrap" width="50" height="50">
             <b style="font-family: 'Lucida Calligraphy'; color: forestgreen">Metro Events</b>
         </a>
-
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link"><?php echo '<h5><b>'.$_SESSION['username'].'</b></h5>'?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ProfileAdmin.php">Create Event</a>
+                    <a class="nav-link" href="ProfileUser.php">Create Event</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="DashboardIntro.php">Log Out</a>

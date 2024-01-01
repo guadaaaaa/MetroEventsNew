@@ -1,10 +1,6 @@
 <?php
 session_start();
 include("api.php");
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    createNewEvent();
-}
-
 ?>
 <!DOCTYPE html>
 
@@ -27,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
             .flex-container > div {
                 background-color: whitesmoke;
-                width: 1000px;
+                width: 1500px;
                 margin: 10px;
                 text-align: center;
                 line-height: 30px;
@@ -41,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
             .flex-container-row > div {
                 background-color: whitesmoke;
-                width: 1000px;
+                width: 1500px;
                 margin: 10px;
                 padding: 20px;
                 text-align: center;
@@ -60,7 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             <hr style="width: 50%; margin: auto; border-color: black">
             <?php echo '<h1><b>'.$_SESSION['name'].'</b></h1>'?>
             <hr style="width: 50%; margin: auto; padding:10px; border-color: black">
-            <?php //echo '<p>'."No. of Events Participated ".$_SESSION['eventPar'].'</p>'?>
         </div>
         <div class="flex-container-row">
             <div style="background-color: forestgreen; border-radius: 30px">
@@ -83,6 +78,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                     <br><br>
                     <button type="submit" class="btn btn-primary" style="margin: auto; width: 480px; background-color: white; color: forestgreen; border-radius: 30px"><b>PROPOSE EVENT</b></button>
                 </form>
+                <?php
+                    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['eventName']) && isset($_POST['eventType'])){
+                        createNewEvent();
+                    }
+                ?>
+            </div>
+            <div style="background-color: forestgreen; border-radius: 30px">
+                <hr style="width: 75%; border-color: white">
+                <h4 style="color: white"><b>APPLICATIONS</b></h4>
+                <hr style="width: 75%; border-color: white">
+                <?php echo RequestApplications(); ?>
             </div>
             <div style="background-color: forestgreen; border-radius: 30px">
                 <hr style="width: 75%; border-color: white">

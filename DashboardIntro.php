@@ -12,7 +12,6 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-
         <div class="container-fluid">
             <a class="navbar-brand">
                 <img src="images/zzlogoooo.png" alt="Bootstrap" width="50" height="50">

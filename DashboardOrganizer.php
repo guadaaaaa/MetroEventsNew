@@ -1,9 +1,6 @@
 <?php
 session_start();
 include("api.php");
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    createNewEvent();
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand">
             <img src="images/zzlogoooo.png" alt="Bootstrap" width="50" height="50">
             <b style="font-family: 'Lucida Calligraphy'; color: forestgreen">Metro Events</b>
         </a>
@@ -31,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                     <a class="nav-link"><?php echo '<h5><b>'.$_SESSION['username'].'</b></h5>'?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ProfileAdmin.php">Create Event</a>
+                    <a class="nav-link" href="ProfileOrganizer.php">Create Event</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="DashboardIntro.php">Log Out</a>
@@ -45,8 +42,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         </form>
     </div>
 </nav>
-<div>
-    <?php echo displayAllApprovedEvents();?>
+<div style="display: flex">
+    <img src="images/zzlandingPage.png" width="1535">
+</div>
+<div style="display: flex; justify-content: flex;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-around;width: 100%;; font-family: 'Century Gothic">
+        <?php echo displayAllEvents();?>
+    </div>
 </div>
 </body>
 </html>
