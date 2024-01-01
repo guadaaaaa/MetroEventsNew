@@ -86,10 +86,10 @@ include("api.php");
             ?>
             <div style="background-color: forestgreen; border-radius: 30px">
                 <hr style="width: 75%; border-color: white">
-                <h4 style="color: white"><b>JOIN US!</b></h4>
+                <h4 style="color: white"><b>APPLY NOW!</b></h4>
                 <hr style="width: 75%; border-color: white">
                 <form method="post" style="text-align: center; background-color: white; margin: 10px; padding: 10px; border-radius: 30px">
-                    <p style="text-align: center; width: 430px">Organize events with MetroEvents! Get Geared up to dive into the excitement of upcoming events!</p>
+                    <p style="text-align: center; width: 430px">Apply to be a MetroEvents Admin now and get Geared up to dive into the excitement of upcoming events!</p>
                     <?php
                         global $adminJSON;
                         global $admin;
