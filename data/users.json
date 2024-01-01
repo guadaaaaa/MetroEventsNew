@@ -1,0 +1,32 @@
+[
+    {
+        "uid": 1,
+        "email": "gnmlo951@metroevents.com",
+        "name": "Guadalue Obando",
+        "username": "GuadzzzN",
+        "password": "123456",
+        "status": 1,
+        "eventPar": 0,
+        "eventOrg": 0
+    },
+    {
+        "uid": 2,
+        "email": "test@test.com",
+        "name": "test",
+        "username": "tesst",
+        "password": "1234",
+        "status": 3,
+        "eventPar": 0,
+        "eventOrg": 0
+    },
+    {
+        "uid": 3,
+        "email": "kaiser@gmail.com",
+        "name": "Kaiser Obando",
+        "username": "Kaitoy",
+        "password": "1234",
+        "status": 3,
+        "eventPar": 0,
+        "eventOrg": 0
+    }
+]

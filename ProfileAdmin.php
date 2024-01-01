@@ -1,0 +1,96 @@
+<?php
+session_start();
+include("api.php");
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    createNewEvent();
+}
+
+?>
+<!DOCTYPE html>
+
+<html>
+<head>
+        <title>METRO EVENTS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <style>
+            body{
+                background-image: url("https://images.squarespace-cdn.com/content/v1/55c37beae4b0336075603f86/1443039469134-E9SLQBQ2OW1Y69KPKFDO/image-asset.jpeg?format=2500w");
+                background-size: cover;
+                font-family: "Century Gothic";
+            }
+            .flex-container {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .flex-container > div {
+                background-color: whitesmoke;
+                width: 1000px;
+                margin: 10px;
+                text-align: center;
+                line-height: 30px;
+                border-radius: 30px;
+            }
+
+            .flex-container-row {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .flex-container-row > div {
+                background-color: whitesmoke;
+                width: 1000px;
+                margin: 10px;
+                padding: 20px;
+                text-align: center;
+                line-height: 30px;
+                border-radius: 30px;
+            }
+        </style>
+</head>
+<body>
+    <div class="flex-container" style="align-items: center">
+        <div style="font-family: 'Century Gothic'">
+            <a href="DashboardAdmin.php" style="padding: 20px; color: gray">Home</a>
+            <a href="DashboardIntro.php" style="padding: 20px; color: gray">Log Out</a>
+            <hr style="width: 50%; margin: auto; border-color: black">
+            <img src="images/zzlogoooo.png" alt="Bootstrap" width="200" height="200">
+            <hr style="width: 50%; margin: auto; border-color: black">
+            <?php echo '<h1><b>'.$_SESSION['name'].'</b></h1>'?>
+            <hr style="width: 50%; margin: auto; padding:10px; border-color: black">
+            <?php //echo '<p>'."No. of Events Participated ".$_SESSION['eventPar'].'</p>'?>
+        </div>
+        <div class="flex-container-row">
+            <div style="background-color: forestgreen; border-radius: 30px">
+                <hr style="width: 75%; border-color: white">
+                <h4 style="color: white"><b>CREATE EVENT</b></h4>
+                <hr style="width: 75%; border-color: white">
+                <form method="post" style="text-align: justify">
+                    <label for="eventName" style="color: white">Event Name</label>
+                    <input name="eventName" id="eventName" type="text" style="border-radius: 30px; width: 350px; height: 50px; padding: 20px">
+                    <label for="eventType" style="color: white">Event Type</label>
+                    <input name="eventType" id="eventType" type="text" style="border-radius: 30px; width: 350px; height: 50px; padding: 20px">
+                    <label for="eventLoc" style="color: white">Event Location</label>
+                    <input name="eventLoc" id="eventLoc" type="text" style="border-radius: 30px; width: 350px; height: 50px; padding: 20px">
+                    <label for="eventDate" style="color: white; text-align: justify">Event Date</label>
+                    <input name="eventDate" id="eventDate" type="date" style="border-radius: 30px; width: 350px; height: 50px; padding: 20px">
+                    <label for="eventTime" style="color: white; text-align: justify">Event Time&nbsp&nbsp&nbsp</label>
+                    <input name="eventTime" id="eventTime" type="time" style="border-radius: 30px; width: 350px; height: 50px; padding: 20px">
+                    <label for="eventDesc" style="color: white; text-align: justify">Description</label>
+                    <textarea name="eventDesc" id=eventDesc rows="4" cols="61" style="line-height: 20px; border-radius: 30px; padding: 10px"></textarea>
+                    <br><br>
+                    <button type="submit" class="btn btn-primary" style="margin: auto; width: 480px; background-color: white; color: forestgreen; border-radius: 30px"><b>PROPOSE EVENT</b></button>
+                </form>
+            </div>
+            <div style="background-color: forestgreen; border-radius: 30px">
+                <hr style="width: 75%; border-color: white">
+                <h4 style="color: white"><b>EVENTS</b></h4>
+                <hr style="width: 75%; border-color: white">
+                <?php echo displayAllEvents(); ?>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
