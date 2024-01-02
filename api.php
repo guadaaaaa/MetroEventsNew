@@ -123,10 +123,10 @@
 
         $createdEvents[] = $newEvent;
         if(file_put_contents($eventsJSON, json_encode($createdEvents, JSON_PRETTY_PRINT))){
-            if ($_SESSION['status'] == 2){
+            if ($_SESSION['role'] == 2){
                 header("Location: DashboardOrganizer.php");
                 exit();
-            } elseif ($_SESSION['status'] == 3){
+            } elseif ($_SESSION['role'] == 3){
                 header("Location: Dashboard.php");
                 exit();
             }
@@ -141,22 +141,91 @@
         global $registeredUsers;
 
         $reversed = array_reverse($createdEvents);
+        foreach($reversed as $event){
+            $eventID = $event['eid'];
+            echo "<div style='display: inline-block; line-height: 10px; width: 300px; height: 300px; border: 1px solid black; margin-top: 1.5%; padding: 10px; border-radius: 10px; background-color: white'>
+                       <form method='post'><h3 style='color: forestgreen'><b>".$event['eventName']."</b></h3>
+                       <h6><b>".$event['eventType']."</b></h6>
+                       <p style='font-size: 15px'>"."Organized by "."<b>".$event['organizer']."</b></p>
+                       <hr style='width: 75%; border-color: black'>
+                       <h4><b>".$event['eventLoc']."</b></h4>
+                       <p><b>".$event['eventDate']. " | ". $event['eventTime']."</b></p>
+                       <hr style='width: 75%; border-color: black'>
+                       <p style='line-height: 20px'>".$event['eventDesc']."</p>                       
+                       <input type='submit' formaction='EventDetails.php' class='button' name='SeeEvent' value='See Event' style='color: white; background-color: forestgreen; padding: 10px; border-radius: 30px'/>
+                       <input type='hidden' name='SeeEventDetermine' value= $eventID>
+                       </form>
+                       </div>";
+        }
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['SeeEvent'])) {
+            $eventIDPar = $_POST['SeeEventDetermine'];
+            SeeEvent($eventIDPar);
+        }
+    }
+
+    function SeeEvent($eventIDPar)
+    {
+        echo "running";
+        echo $eventIDPar;
+        global $createdEvents;
+        foreach ($createdEvents as $event){
+            if($event['eid'] == $eventIDPar){
+                echo '<div style="display: inline-block; line-height: 10px; width: 300px; height: 300px; border: 1px solid black; margin-top: 1.5%; padding: 10px; border-radius: 10px; background-color: white">';
+                echo $event['eventName'];
+                echo '</div>';
+            }
+        }
+        echo "running";
+    }
+
+
+    function displayAdminEvents()
+    {
+        global $createdEvents;
+        global $registeredUsers;
+
+        $reversed = array_reverse($createdEvents);
 
         foreach($reversed as $event){
-                echo '<div style="display: inline-block; line-height: 10px; width: 300px; height: 300px; border: 1px solid black; margin-top: 1.5%; padding: 10px; border-radius: 10px; background-color: white">
-                       <form method="post"><h3 style="color: forestgreen"><b>'.$event['eventName'].'</b></h3>
-                       <h6><b>'.$event['eventType'].'</b></h6>
-                       <p style="font-size: 15px">'.'Organized by '.'<b>'.$event['organizer'].'</b></p>
-                       <hr style="width: 75%; border-color: black">
-                       <h4><b>'.$event['eventLoc'].'</b></h4>
-                       <p><b>'.$event['eventDate']. ' | '. $event['eventTime'].'</b></p>
-                       <hr style="width: 75%; border-color: black">
-                       <p style="line-height: 20px">'.$event['eventDesc'].'</p>                       
-                       <input type="submit" class="button" name="approveEvent" value="See Event" style="color: white; background-color: forestgreen; padding: 10px; border-radius: 30px"/>
-                       </form>
-                  </div>';
+            echo '<div style="display: inline-block; line-height: 10px; width: 300px; height: 300px; border: 1px solid black; margin-top: 1.5%; padding: 10px; border-radius: 10px; background-color: white">
+                           <form method="post"><h3 style="color: forestgreen"><b>'.$event['eventName'].'</b></h3>
+                           <h6><b>'.$event['eventType'].'</b></h6>
+                           <p style="font-size: 15px">'.'Organized by '.'<b>'.$event['organizer'].'</b></p>
+                           <hr style="width: 75%; border-color: black">
+                           <h4><b>'.$event['eventLoc'].'</b></h4>
+                           <p><b>'.$event['eventDate']. ' | '. $event['eventTime'].'</b></p>
+                           <hr style="width: 75%; border-color: black">
+                           <p style="line-height: 20px">'.$event['eventDesc'].'</p>                       
+                           <input type="submit" class="button" name="approveEvent" value="Cancel Event" style="color: white; background-color: forestgreen; padding: 10px; border-radius: 30px"/>
+                           </form>
+                      </div>';
         }
 
+    }
+
+    function displayOrganizerEvents()
+    {
+        global $createdEvents;
+        global $registeredUsers;
+
+        $reversed = array_reverse($createdEvents);
+
+        foreach($reversed as $event){
+            if($event['organizer'] == $_SESSION['name']){
+                echo '<div style="display: inline-block; line-height: 10px; width: 300px; height: 300px; border: 1px solid black; margin-top: 1.5%; padding: 10px; border-radius: 10px; background-color: white">
+                           <form method="post"><h3 style="color: forestgreen"><b>'.$event['eventName'].'</b></h3>
+                           <h6><b>'.$event['eventType'].'</b></h6>
+                           <p style="font-size: 15px">'.'Organized by '.'<b>'.$event['organizer'].'</b></p>
+                           <hr style="width: 75%; border-color: black">
+                           <h4><b>'.$event['eventLoc'].'</b></h4>
+                           <p><b>'.$event['eventDate']. ' | '. $event['eventTime'].'</b></p>
+                           <hr style="width: 75%; border-color: black">
+                           <p style="line-height: 20px">'.$event['eventDesc'].'</p>                       
+                           <input type="submit" class="button" name="approveEvent" value="See Event" style="color: white; background-color: forestgreen; padding: 10px; border-radius: 30px"/>
+                           </form>
+                      </div>';
+            }
+        }
     }
 
     function requestToBeOrganizer($userID){
@@ -175,8 +244,10 @@
         ];
 
         $newApp[] = $newOrgReq;
-        file_put_contents($orgJSON, json_encode($newApp, JSON_PRETTY_PRINT));
-        header("Refresh:0");
+        if(file_put_contents($orgJSON, json_encode($newApp, JSON_PRETTY_PRINT))){
+            header("Refresh:0");
+        }
+
     }
 
     function requestToBeAdmin($userID){
@@ -227,7 +298,9 @@
         ];
 
         $notifications[] =$newNotif;
-        file_put_contents($notifsJSON, json_encode($notifications, JSON_PRETTY_PRINT));
+        if(file_put_contents($notifsJSON, json_encode($notifications, JSON_PRETTY_PRINT))){
+            header("Refresh:0");
+        }
     }
 
     function RequestApplications(){
@@ -242,37 +315,42 @@
         echo "<hr style='width: 75%; border-color: white'>";
         echo "<h5 style='color: white'><b>ORGANIZER APPLICATIONS</b></h5>";
         echo "<hr style='width: 75%; border-color: white'>";
-        foreach($organizers as $or){
-            $id = $or['uid'];
-            foreach($registeredUsers as $user){
-                if($or['uid'] == $user['uid'] && $or['status'] == "pending"){
-                    echo "<div style='display: inline-block; line-height: 10px; width: 300px; height: 150px; border: 1px solid black; margin-top: 1.5%; padding: 10px; border-radius: 10px; background-color: white'>";
-                    echo "<div>";
-                    echo "<h4><b>".$user['name']."</b></h4>";
-                    echo "<p>Requested to be an Organizer</p>";
-                    echo "<form method='POST' action = ''>";
-                    echo "<input type='submit' name = 'approveUserOrg' value = 'Approve' style='background-color: forestgreen; border-radius: 30px; padding: 10px; color: white'>";
-                    echo "<input type='hidden' name='approveUserOrgDetermine' value= $id>";
-                    echo "</form>";
-                    echo "<form method = 'POST'>";
-                    echo "<input type= 'submit' name = 'declineUserOrg' value = 'Decline' style='background-color: forestgreen; border-radius: 30px; padding: 10px; color: white'>";
-                    echo "<input type='hidden' name='declineUserOrgDetermine' value= $id>";
-                    echo "</form>";
-                    echo "</div>";
-                    echo "</div>";
+        if(!empty($organizers)){
+            foreach($organizers as $or){
+                $id = $or['uid'];
+                foreach($registeredUsers as $user){
+                    if($or['uid'] == $user['uid'] && $or['status'] == "pending"){
+                        echo "<div style='display: inline-block; line-height: 10px; width: 300px; height: 150px; border: 1px solid black; margin-top: 1.5%; padding: 10px; border-radius: 10px; background-color: white'>";
+                        echo "<div>";
+                        echo "<h4><b>".$user['name']."</b></h4>";
+                        echo "<p>Requested to be an Organizer</p>";
+                        echo "<form method='POST' action = ''>";
+                        echo "<input type='submit' name = 'approveUserOrg' value = 'Approve' style='background-color: forestgreen; border-radius: 30px; padding: 10px; color: white'>";
+                        echo "<input type='hidden' name='approveUserOrgDetermine' value= $id>";
+                        echo "</form>";
+                        echo "<form method = 'POST'>";
+                        echo "<input type= 'submit' name = 'declineUserOrg' value = 'Decline' style='background-color: forestgreen; border-radius: 30px; padding: 10px; color: white'>";
+                        echo "<input type='hidden' name='declineUserOrgDetermine' value= $id>";
+                        echo "</form>";
+                        echo "</div>";
+                        echo "</div>";
 
-                    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['approveUserOrg'])) {
-                        $userIDPar = $_POST['approveUserOrgDetermine'];
-                        OrganizerApplication(true, $userIDPar);
-                    }
+                        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['approveUserOrg'])) {
+                            $userIDPar = $_POST['approveUserOrgDetermine'];
+                            OrganizerApplication(true, $userIDPar);
+                        }
 
-                    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['declineUserOrg'])) {
-                        $userIDPar = $_POST['declineUserOrgDetermine'];
-                        OrganizerApplication(false, $userIDPar);
+                        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['declineUserOrg'])) {
+                            $userIDPar = $_POST['declineUserOrgDetermine'];
+                            OrganizerApplication(false, $userIDPar);
+                        }
                     }
                 }
             }
+        } else {
+            echo '<h5>'.'No Applications Pending'.'</h5>';
         }
+
 
         echo "<hr style='width: 75%; border-color: white'>";
         echo "<h5 style='color: white'><b>ADMINISTRATION APPLICATIONS</b></h5>";
@@ -337,9 +415,9 @@
                 }
             }
         }
-
-        file_put_contents($orgJSON, json_encode($organizers, JSON_PRETTY_PRINT));
-        file_put_contents($usersJSON, json_encode($registeredUsers, JSON_PRETTY_PRINT));
+        if(file_put_contents($orgJSON, json_encode($organizers, JSON_PRETTY_PRINT)) && file_put_contents($usersJSON, json_encode($registeredUsers, JSON_PRETTY_PRINT))){
+            header("Refresh:0");
+        }
     }
 
     function AdminApplication($statusApp, $uid){
@@ -369,30 +447,32 @@
             }
         }
 
-        file_put_contents($adminJSON, json_encode($admin, JSON_PRETTY_PRINT));
-        file_put_contents($usersJSON, json_encode($registeredUsers, JSON_PRETTY_PRINT));
-
+        if(file_put_contents($adminJSON, json_encode($admin, JSON_PRETTY_PRINT)) && file_put_contents($usersJSON, json_encode($registeredUsers, JSON_PRETTY_PRINT))){
+            header("Refresh:0");
+        }
     }
 
     function DisplayNotifs(){
         global $notifications;
         $notifID = null;
         foreach($notifications as $notification){
-            $notifID = $notification['id'];
-            echo "<div style='display: inline-block; line-height: 12px; width: 300px; height: 130px; border: 1px solid black; padding: 10px; border-radius: 10px; background-color: white'>";
-            echo "<div>";
-            echo "<h4>From <b>{$notification['name']}</b></h4>";
-            echo "<p>{$notification['message']}</p>";
-            echo "<form method = 'POST'>";
-            echo "<input type= 'submit' name = 'deleteNotif' value = 'Delete' style='background-color: forestgreen; border-radius: 30px; padding: 10px; color: white'></button>";
-            echo "<input type='hidden' name='deleteNotifDetermine' value= $notifID>";
-            echo "</form>";
-            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deleteNotif'])) {
-                $notificationIDPar = $_POST['deleteNotifDetermine'];
-                deleteNotification($notificationIDPar);
+            if($notification['userId'] == $_SESSION['uid']){
+                $notifID = $notification['id'];
+                echo "<div style='display: inline-block; line-height: 12px; width: 300px; height: 130px; border: 1px solid black; padding: 10px; border-radius: 10px; background-color: white'>";
+                echo "<div>";
+                echo "<h4>From <b>{$notification['name']}</b></h4>";
+                echo "<p>{$notification['message']}</p>";
+                echo "<form method = 'POST'>";
+                echo "<input type= 'submit' name = 'deleteNotif' value = 'Delete' style='background-color: forestgreen; border-radius: 30px; padding: 10px; color: white'></button>";
+                echo "<input type='hidden' name='deleteNotifDetermine' value= $notifID>";
+                echo "</form>";
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deleteNotif'])) {
+                    $notificationIDPar = $_POST['deleteNotifDetermine'];
+                    deleteNotification($notificationIDPar);
+                }
+                echo "</div>";
+                echo "</div>";
             }
-            echo "</div>";
-            echo "</div>";
         }
     }
 
@@ -403,7 +483,9 @@
         foreach($notifications as $key => $notif){
             if($notif['id'] == $notificationIDPar){
                 unset($notifications[$key]);
-                file_put_contents($notifsJSON, json_encode($notifications, JSON_PRETTY_PRINT));
+                if(file_put_contents($notifsJSON, json_encode($notifications, JSON_PRETTY_PRINT))){
+                    header("Refresh:0");
+                }
             }
         }
     }

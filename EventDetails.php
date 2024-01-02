@@ -44,7 +44,7 @@ include("api.php");
 </nav>
 <div style="display: flex; justify-content: flex;">
     <div style="display: flex; flex-wrap: wrap; justify-content: space-around;width: 100%;; font-family: 'Century Gothic">
-        <?php echo displayAllEvents();?>
+        <?php echo SeeEvent($event['eid']);?>
     </div>
 </div>
 </body>

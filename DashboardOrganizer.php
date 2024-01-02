@@ -28,7 +28,7 @@ include("api.php");
                     <a class="nav-link"><?php echo '<h5><b>'.$_SESSION['username'].'</b></h5>'?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ProfileOrganizer.php">Create Event</a>
+                    <a class="nav-link" href="ProfileOrganizer.php">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="DashboardIntro.php">Log Out</a>

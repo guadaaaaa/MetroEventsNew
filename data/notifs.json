@@ -33,5 +33,19 @@
         "name": "Guadalue",
         "type": "Event Request Update",
         "message": "Your application to be an Administrator was accepted!"
+    },
+    "17": {
+        "id": 18,
+        "userId": "3",
+        "name": "Guadalue",
+        "type": "Event Request Update",
+        "message": "Your application to be an organizer was accepted!"
+    },
+    "18": {
+        "id": 19,
+        "userId": "4",
+        "name": "Guadalue",
+        "type": "Event Request Update",
+        "message": "Your application to be an organizer was accepted!"
     }
 }

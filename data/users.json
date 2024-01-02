@@ -28,5 +28,15 @@
         "role": 2,
         "eventPar": 0,
         "eventOrg": 0
+    },
+    {
+        "uid": 4,
+        "email": "test@test.com",
+        "name": "test",
+        "username": "tesst",
+        "password": "1234",
+        "role": 2,
+        "eventPar": 0,
+        "eventOrg": 0
     }
 ]

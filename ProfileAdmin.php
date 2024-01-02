@@ -62,7 +62,7 @@ include("api.php");
                 <hr style="width: 75%; border-color: white">
                 <h4 style="color: white"><b>CREATE EVENT</b></h4>
                 <hr style="width: 75%; border-color: white">
-                <form method="post" style="text-align: justify">
+                <form method="post" style="text-align: justify" enctype="multipart/form-data">
                     <label for="eventName" style="color: white">Event Name</label>
                     <input name="eventName" id="eventName" type="text" style="border-radius: 30px; width: 350px; height: 50px; padding: 20px">
                     <label for="eventType" style="color: white">Event Type</label>
@@ -94,7 +94,7 @@ include("api.php");
                 <hr style="width: 75%; border-color: white">
                 <h4 style="color: white"><b>EVENTS</b></h4>
                 <hr style="width: 75%; border-color: white">
-                <?php echo displayAllEvents(); ?>
+                <?php echo displayAdminEvents(); ?>
             </div>
         </div>
     </div>

@@ -49,7 +49,7 @@ include("api.php");
 <body>
 <div class="flex-container" style="align-items: center">
     <div style="font-family: 'Century Gothic'">
-        <a href="DashboardAdmin.php" style="padding: 20px; color: gray">Home</a>
+        <a href="DashboardOrganizer.php" style="padding: 20px; color: gray">Home</a>
         <a href="DashboardIntro.php" style="padding: 20px; color: gray">Log Out</a>
         <hr style="width: 50%; margin: auto; border-color: black">
         <img src="images/zzlogoooo.png" alt="Bootstrap" width="200" height="200">
@@ -119,9 +119,9 @@ include("api.php");
         </div>
         <div style="background-color: forestgreen; border-radius: 30px">
             <hr style="width: 75%; border-color: white">
-            <h4 style="color: white"><b>EVENTS</b></h4>
+            <h4 style="color: white"><b>MY EVENTS</b></h4>
             <hr style="width: 75%; border-color: white">
-            <?php echo displayAllEvents(); ?>
+            <?php echo displayOrganizerEvents(); ?>
         </div>
     </div>
 </div>
