@@ -83,6 +83,14 @@ include("api.php");
                         createNewEvent();
                     }
                 ?>
+                <br>
+                <hr style="width: 75%; margin: auto; border-color: white">
+                <h4 style="color: white"><b>ORGANIZE EVENTS</b></h4>
+                <hr style="width: 75%; margin: auto; border-color: white">
+                <br>
+                <?php
+                    echo OrganizerEventsView();
+                ?>
             </div>
             <div style="background-color: forestgreen; border-radius: 30px">
                 <hr style="width: 75%; border-color: white">

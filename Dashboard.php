@@ -1,9 +1,6 @@
 <?php
 session_start();
 include("api.php");
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    createNewEvent();
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,9 +42,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 <div style="display: flex">
     <img src="images/zzlandingPage.png" width="1535">
 </div>
+
 <div>
     <h3 style="text-align: center; color: forestgreen"><b>ALL EVENTS</b></h3>
     <hr style="width: 50%; margin: auto; padding: 10px">
+    <div>
+        <?php DisplayEventDetails();?>
+    </div>
+
 </div>
 </body>
 </html>

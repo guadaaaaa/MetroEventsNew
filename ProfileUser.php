@@ -60,7 +60,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['OrgApp'])) {
         <hr style="width: 50%; margin: auto; border-color: black">
         <?php echo '<h1><b>'.$_SESSION['name'].'</b></h1>'?>
         <hr style="width: 50%; margin: auto; padding:10px; border-color: black">
-        <?php //echo '<p>'."No. of Events Participated ".$_SESSION['eventPar'].'</p>'?>
     </div>
     <div class="flex-container-row">
         <div style="background-color: forestgreen; border-radius: 30px">
@@ -81,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['OrgApp'])) {
                     if($orgTemp){
                         echo "<input type= 'submit' name = 'OrgApp' value = 'Request Pending' style='margin: auto; background-color: forestgreen; color: white; border-radius: 30px'></button>";
                     }else{
-                        echo "<input type= 'submit' name = 'OrgApp' value = 'Join the Team' style='margin: auto; background-color: forestgreen; color: white; border-radius: 30px'></button>";
+                        echo "<input type= 'submit' name = 'OrgApp' value = 'Join  the Team' style='margin: auto; background-color: forestgreen; color: white; border-radius: 30px'></button>";
                     }
                 ?>
             </form>
@@ -89,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['OrgApp'])) {
             <hr style="width: 75%; border-color: white">
             <h4 style="color: white"><b>NOTIFICATIONS</b></h4>
             <hr style="width: 75%; border-color: white">
-
+            <?php DisplayNotifs();?>
         </div>
         <div style="background-color: forestgreen; border-radius: 30px">
             <hr style="width: 75%; border-color: white">

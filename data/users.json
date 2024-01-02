@@ -5,38 +5,22 @@
         "name": "Guadalue",
         "username": "Guadaa",
         "password": "1234",
-        "role": 1,
-        "eventPar": 0,
-        "eventOrg": 0
+        "role": 1
     },
     {
         "uid": 2,
-        "email": "test@test.com",
-        "name": "Admin",
-        "username": "Organizer",
-        "password": "1234",
-        "role": 1,
-        "eventPar": 0,
-        "eventOrg": 0
+        "email": "organizer@test.com",
+        "name": "organizer",
+        "username": "org",
+        "password": "12345",
+        "role": 1
     },
     {
         "uid": 3,
-        "email": "test@test.com",
-        "name": "Nina",
-        "username": "guadaaaaaa",
-        "password": "1234",
-        "role": 2,
-        "eventPar": 0,
-        "eventOrg": 0
-    },
-    {
-        "uid": 4,
-        "email": "test@test.com",
-        "name": "test",
-        "username": "tesst",
-        "password": "1234",
-        "role": 2,
-        "eventPar": 0,
-        "eventOrg": 0
+        "email": "user@gmail.com",
+        "name": "Userlang",
+        "username": "User",
+        "password": "123456",
+        "role": 3
     }
 ]

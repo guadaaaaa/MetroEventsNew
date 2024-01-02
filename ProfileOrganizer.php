@@ -121,7 +121,7 @@ include("api.php");
             <hr style="width: 75%; border-color: white">
             <h4 style="color: white"><b>MY EVENTS</b></h4>
             <hr style="width: 75%; border-color: white">
-            <?php echo displayOrganizerEvents(); ?>
+            <?php echo OrganizerEventsView(); ?>
         </div>
     </div>
 </div>

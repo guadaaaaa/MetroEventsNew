@@ -1,51 +1,16 @@
-{
-    "12": {
-        "id": 13,
-        "userId": "2",
-        "name": "Guadalue",
-        "type": "Event Request Update",
-        "message": "Your application was accepted!"
-    },
-    "13": {
-        "id": 14,
-        "userId": "4",
-        "name": "Guadalue",
-        "type": "Event Request Update",
-        "message": "Your application was accepted!"
-    },
-    "14": {
-        "id": 15,
-        "userId": "3",
-        "name": "Guadalue",
-        "type": "Event Request Update",
-        "message": "Your application was accepted!"
-    },
-    "15": {
-        "id": 16,
+[
+    {
+        "id": 1,
         "userId": "2",
         "name": "Guadalue",
         "type": "Event Request Update",
         "message": "Your application to be an organizer was accepted!"
     },
-    "16": {
-        "id": 17,
+    {
+        "id": 2,
         "userId": "2",
         "name": "Guadalue",
         "type": "Event Request Update",
         "message": "Your application to be an Administrator was accepted!"
-    },
-    "17": {
-        "id": 18,
-        "userId": "3",
-        "name": "Guadalue",
-        "type": "Event Request Update",
-        "message": "Your application to be an organizer was accepted!"
-    },
-    "18": {
-        "id": 19,
-        "userId": "4",
-        "name": "Guadalue",
-        "type": "Event Request Update",
-        "message": "Your application to be an organizer was accepted!"
     }
-}
+]
